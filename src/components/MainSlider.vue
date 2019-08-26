@@ -197,7 +197,7 @@
 			text-align: left;			
 		}
 		&__welcome-text{
-			font-family: Muller;
+			font-family: Muller Light;
 			font-size: 20px;
 			margin-top: 36px;
 			margin-bottom: 28px;
@@ -213,6 +213,7 @@
 		font-family: Muller;
 		font-weight: bold;
 		font-size: 44px;
+		color: @lightText;
 		animation: h1_appering 2s;
 	}
 

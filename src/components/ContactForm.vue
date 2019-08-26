@@ -2,7 +2,7 @@
 	<div class="grey_bg contact-us">	
 		<div class="container justify-content-center">
 			<div class="row col-md-12 m-0">
-				<HeadingRight text="Есть вопросы? Напишите нам"/>		
+				<HeadingRight class="contact-us__heading-margin" text="Есть вопросы? Напишите нам"/>		
 			</div>
 			<form @submit = "submit">
 				<div class="row m-0">
@@ -76,13 +76,25 @@
 			font-family: Muller;
 			font-size: 14px;
 			padding-left: 7px;
+			padding: 7px 15px 6px 15px;
+		}
+		&__link{
+			font-family: Muller;
+			font-size: 12px;
+			margin-bottom: 5px;
+			text-decoration: underline;			
+			color: @darkText;
 		}
 		&__message{
-			height: 95px;
+			height: 114px;
 		}
 		&__btn-position{
 			margin-top: 15px;
 			margin-bottom: 80px;
+		}
+		&__heading-margin{
+			margin-top: 66px;
+			margin-bottom: 50px;
 		}
 	}
 

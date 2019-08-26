@@ -27,9 +27,10 @@
                         <span id="ua" class="c-header__lang" @click="chooseLang(true, false)">UA</span>
                         <span id="ru" class="c-header__lang current-lang" @click="chooseLang(false, true)">RU</span>
                     </div> 
-                     <a href="#" class="orange_btn c-header__btn-position ">
-                        Войти
-                    </a>                 
+                     <router-link to="/login" class="orange_btn c-header__btn-position">
+                         Войти
+                     </router-link>
+               
                 </div>               
             </div>
         </div>

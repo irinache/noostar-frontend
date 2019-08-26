@@ -29,7 +29,7 @@
 		margin-bottom: 16px;
 	}
 	.heading-left{
-		margin: 66px auto 50px auto;
+		margin: 0 auto 0 auto;
 		width: 100%;
 	}
 	.heading-left:after {
