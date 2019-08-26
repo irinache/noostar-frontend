@@ -6,7 +6,7 @@
 				<span class="course-card__date">
 				{{date}}
 				</span>
-				<a class="orange_btn course-card__btn-pos">Идет набор</a>			
+				<span class="orange_btn course-card__btn-pos">Идет набор</span>			
 			</div>			
 		</div>
 		<div class="course-card__image">			
@@ -46,7 +46,7 @@
 				</p>
 			</div>
 			<div class="course-card__info-btn">
-				<a class="orange_btn course-card__btn-pos">Записаться на курс</a>
+				<a href="#" class="orange_btn course-card__btn-pos">Записаться на курс</a>
 				
 			</div>
 			

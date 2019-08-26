@@ -1,7 +1,7 @@
 <template>
-	<div class="container-fluid grey_bg course-list">
+	<div class="container-fluid course-list">
 		<div class="row">
-			<Heading text = "Список курсов" color="grey"/>			
+			<Heading text = "Список курсов" color="white"/>			
 		</div>
 		<div id="course-list__left" class="course-list__arr course-list__left" v-on:click = "left">
 				

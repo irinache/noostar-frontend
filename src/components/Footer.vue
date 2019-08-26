@@ -3,9 +3,9 @@
 	    <div class="footer__top footer__brdr-btm">
 	        <div class="container">
 	            <div class="row align-items-center ">
-	                <div class="col-md-4 footer__logo">
+	                <a href="#" class="col-md-4 footer__logo">
 	                    <img src="../assets/images/logo.png" alt="logo"/>
-	                </div>
+	                </a>
 	                <div class="col-md-8 text-right footer__contacts">	                    
 	                    <div class="footer__contact">
 	                        <span class="footer__icon email"></span>
@@ -30,15 +30,15 @@
 	    		<div class="row">
 	    			<div class="col-md-6 d-flex align-items-center">
 		    			<div class="footer__text">
-			    			&copy; 2017  
+			    			&copy; ФОП Козаченко Александр Александрович, 2019  
 			    		</div>
 					</div>	
 			    	<div class="col-md-6">
 			    		<div class="footer__social-media">
-				    		<div class="footer__sm-icon vk"></div>
-				    		<div class="footer__sm-icon fb"></div>
-				    		<div class="footer__sm-icon tw"></div>
-				    		<div class="footer__sm-icon in"></div> 
+				    		<a href="#" class="footer__sm-icon vk"></a>
+				    		<a href="#" class="footer__sm-icon fb"></a>
+				    		<a href="#" class="footer__sm-icon tw"></a>
+				    		<a href="#" class="footer__sm-icon in"></a> 
 			    		</div>	
 	    			</div>	    			
 	    		</div>	    		
@@ -84,6 +84,10 @@
 			height: 38px;
 			display: inline-block;
 			margin-left: 17px;
+		}
+		&__sm-icon:hover{
+			transform: scale(1.1);
+			transition: 0.2s;
 		}
 		&__text{
 			color: @text;
@@ -142,8 +146,7 @@
 	        &__social-media{
 	        	display: block;	 
 	        	text-align: center;
-	        	margin-top: 10px;       	
-
+	        	margin-top: 10px; 
 	        	margin-bottom: 30px;				
 			}
 			&__sm-icon{

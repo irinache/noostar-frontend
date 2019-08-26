@@ -3,9 +3,9 @@
     <div class="c-header__top">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-4 logo">
+                <a href="#" class="col-md-4 logo">
                     <img src="../assets/images/logo.png" alt="logo"/>
-                </div>
+                </a>
                 <div class="col-md-8 c-header__elements">
                     <div class="c-header__contacts">
                         <div class="c-header__contact">
@@ -27,7 +27,7 @@
                         <span id="ua" class="c-header__lang" @click="chooseLang(true, false)">UA</span>
                         <span id="ru" class="c-header__lang current-lang" @click="chooseLang(false, true)">RU</span>
                     </div> 
-                     <a class="orange_btn c-header__btn-position ">
+                     <a href="#" class="orange_btn c-header__btn-position ">
                         Войти
                     </a>                 
                 </div>               
@@ -81,12 +81,9 @@
        display: inline-block;
        vertical-align: middle;
        margin-right: 25px;
-
     }
-    &__contact {
-       
+    &__contact {       
        text-align: right;
-
     }
     &__icon {
         width: 17px;
@@ -181,7 +178,6 @@
         &__langauges{
             margin-right: 45px;
         }
-
     }
 }
 

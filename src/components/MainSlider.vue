@@ -18,7 +18,7 @@
 						и интернет-технологиям для людей любого
 						возраста и с любой базой знаний					
 					</p>
-					<a href="#" class="orange_btn btn-animation">Стать студентом</a>
+					<a href="#" class="orange_btn btn-animation">Учиться</a>
 				</div>
 			</div>
 			<div class="main-slider__slide-single">				
@@ -32,7 +32,7 @@
 						и интернет-технологиям для людей любого
 						возраста и с любой базой знаний					
 					</p>
-					<a href="#" class="orange_btn btn-animation">Стать студентом</a>
+					<a href="#" class="orange_btn btn-animation">Учиться</a>
 				</div>
 			</div>
 			<div class="main-slider__slide-single">				
@@ -46,7 +46,7 @@
 						и интернет-технологиям для людей любого
 						возраста и с любой базой знаний					
 					</p>
-					<a href="#" class="orange_btn btn-animation">Стать студентом</a>
+					<a href="#" class="orange_btn btn-animation">Учиться</a>
 				</div>
 			</div>			
 			</div>
@@ -165,7 +165,7 @@
 			transform: translateY(-50%);
 			width: 86px;
 			height: 86px;
-			z-index: 13;        
+			z-index: 13; 			       
 	    }
 	    &__left{
 			background: url("../assets/images/arrow_left_inactive.png") no-repeat center center/cover;
@@ -204,7 +204,10 @@
 			animation: text_appering 2s;
 			width: 40%;
 		}												
-	}		
+	}	
+	.arr-active{
+		cursor: pointer;
+	}	
 	
 	h1{
 		font-family: Muller;

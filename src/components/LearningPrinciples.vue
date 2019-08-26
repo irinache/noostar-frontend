@@ -1,19 +1,21 @@
 <template>
-	<div class="container learning-principles">
-		<div class="row">
-			<div v-for="p in principles" class="col-md-4 learning-principles__block learning-principles__border">
-				<div class="learning-principles__icon mx-auto d-block" :class="p.img">					
+	<div class="grey_bg learning-principles">
+		<div class="container">
+			<div class="row">
+				<div v-for="p in principles" class="col-md-4 learning-principles__block learning-principles__border">
+					<div class="learning-principles__icon mx-auto d-block" :class="p.img">					
+					</div>
+					<h3>
+						{{p.heading}}
+					</h3>				
+					<p class="learning-principles__text">
+						{{p.text}}
+					</p>
 				</div>
-				<h3>
-					{{p.heading}}
-				</h3>				
-				<p class="learning-principles__text">
-					{{p.text}}
-				</p>
+				
 			</div>
-			
 		</div>
-	</div>
+	</div>	
 </template>
 
 <script>
@@ -22,7 +24,7 @@
   			return {
   				principles: [
 					{ 
-						img: 'book',
+						img: 'hat',
 						heading: 'LOREM IPSUM DOLOR',
 						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',			
 					},
@@ -32,7 +34,7 @@
 						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',			
 					},
 					{ 
-						img: 'hat',
+						img: 'book',
 						heading: 'DUIS AUTE IRURE',
 						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',			
 					}
@@ -48,6 +50,7 @@
 	@import '../assets/styles/index.less';
 
 	.learning-principles{
+		background-color: @darkerBackground;
 		&__block{
 			padding: 20px;	
 			margin-top: 50px;

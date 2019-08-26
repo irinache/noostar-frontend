@@ -1,11 +1,9 @@
 <template>	
 	<div>
 		<Header />
-		<MainSlider />
-		<!--<CyclicalSlider/> -->	
+		<MainSlider />		
 		<LearningPrinciples />
-		<CourseList />
-		<TeacherList />
+		<CourseList />		
 		<ContactForm />
 		<Footer />
 	</div>		
@@ -16,7 +14,6 @@ import Header from './Header.vue'
 import MainSlider from './MainSlider.vue'
 import LearningPrinciples from './LearningPrinciples.vue'
 import CourseList from './CourseList.vue'
-import CyclicalSlider from './CyclicalSlider.vue'
 import TeacherList from './TeacherList.vue'
 import ContactForm from './ContactForm.vue'
 import Footer from './Footer.vue'
@@ -25,8 +22,7 @@ export default {
   components: {
   	Header,
   	MainSlider,
-  	LearningPrinciples,  	
-  	CyclicalSlider,
+  	LearningPrinciples,
   	TeacherList,
   	CourseList,
   	ContactForm,
