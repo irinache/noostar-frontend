@@ -6,36 +6,31 @@
                 <div class="col-md-4 logo">
                     <img src="../assets/images/logo.png" alt="logo"/>
                 </div>
-                <div class="col-md-auto">
-                    <div class="c-header__contact">
-                        <span class="c-header__icon email"></span>
-                        <span class="c-header__contact-text">
-                        noostar@gmail.com
-                        </span> 
-                    </div>
-                    <div class="c-header__contact">
-                        <span class="c-header__icon phone"></span>
-                        <span class="c-header__contact-text">
-                            +38 (050) 123-45-67
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="btn-group col-md-auto dropdown-lang">
-                    <button type="button" class="btn c-header__lang dropdown-toggle" data-toggle="dropdown">
-                           English
-                    </button>
-                     <div class="dropdown-menu">
-                        <a class="dropdown-item c-header__lang" href="#">English</a>
-                        <a class="dropdown-item c-header__lang" href="#">Russian</a>
-                        <a class="dropdown-item c-header__lang" href="#">Ukrainian</a>
-                    </div>
-                </div>  
-                <div class="col-md-auto btn_container">
-                    <a class="orange_btn c-header__btn-position ">
-                        Учиться
-                    </a>
-                </div>  
+                <div class="col-md-8 c-header__elements">
+                    <div class="c-header__contacts">
+                        <div class="c-header__contact">
+                            <span class="c-header__icon phone"></span>
+                            <span class="c-header__icon viber"></span>
+                            <span class="c-header__icon telegram"></span>
+                            <span class="c-header__contact-text">
+                                +38 (050) 123-45-67
+                            </span>
+                        </div>
+                        <div class="c-header__contact">
+                            <span class="c-header__icon email"></span>
+                            <span class="c-header__contact-text">
+                            noostar@gmail.com
+                            </span> 
+                        </div>   
+                    </div>                    
+                    <div class="c-header__langauges">
+                        <span id="ua" class="c-header__lang" @click="chooseLang(true, false)">UA</span>
+                        <span id="ru" class="c-header__lang current-lang" @click="chooseLang(false, true)">RU</span>
+                    </div> 
+                     <a class="orange_btn c-header__btn-position ">
+                        Войти
+                    </a>                 
+                </div>               
             </div>
         </div>
     </div>
@@ -44,7 +39,26 @@
 
 <script>
     export default{
-        
+        data: function () {
+            return{
+                                
+            }               
+        },
+        methods:{           
+            chooseLang: function(ua_value, ru_value){
+               if(ua_value){
+                    ru.classList.remove("current-lang");
+                    ua.classList.add("current-lang");
+               }  
+               if(ru_value){
+                    ua.classList.remove("current-lang");
+                    ru.classList.add("current-lang");
+               }                              
+            }
+        },
+        mounted: function () {           
+            this.chooseLang(false, true);
+        } 
     }
 </script>
 
@@ -61,33 +75,58 @@
         font-weight: 600;
         font-size: 15px;
         color: @lightText;
-        text-align: left;
+        text-align: left; 
+    }
+    &__contacts {
+       display: inline-block;
+       vertical-align: middle;
+       margin-right: 25px;
+
     }
     &__contact {
-       display: inline-block;
-       margin-right: 25px;
+       
+       text-align: right;
+
     }
     &__icon {
-        width: 12px;
-        height: 12px;
+        width: 17px;
+        height: 17px;
         display: inline-block;
+        vertical-align: middle;
+        margin: 3px;
     }
     &__btn-position{
         margin: 0 auto;  
         margin-top: 20px;
         margin-bottom: 20px;
     }
-    &__lang{
-        padding: 7px 15px 7px;
-        border: 1px @text;
-        box-shadow: none;
-        border-radius: 4px;
-        color:@text;
-        font-family: Muller;
-        font-size: 13px !important;   
-        background-color: @lightBackground !important;
+    &__langauges{
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 25px;
     }
+    &__lang{
+        padding: 0;
+        margin:0;
+        padding: 9px 12px 7px 12px;        
+        border-radius: 4px;        
+        font-family: Muller;
+        font-size: 13px;  
+        color: @lightText; 
+        border: 1px solid transparent;        
+    }
+    &__lang:hover{
+        background-color: rgba(255,255,255,0.12);    
+        transition: 0.5s;      
+    }
+    &__elements{
+         text-align: right;
+    }
+}
 
+.current-lang{
+    border: 1px solid @lightText;
+    background-color: rgba(255,255,255,0.12);    
 }
 .logo{
     margin-top: 20px;
@@ -96,54 +135,27 @@
 }
 
 .email{
-     background: url('../assets/images/email_icon.png') center/cover no-repeat content-box;
+     background: url('../assets/images/email_w.png') center/contain no-repeat content-box;
 }
 .phone{
-     background: url('../assets/images/phone_icon.png') center/cover no-repeat content-box;
+     background: url('../assets/images/phone_w.png') center/contain no-repeat content-box;
+}
+.viber{
+     background: url('../assets/images/viber_w.png') center/contain no-repeat content-box;
+}
+.telegram{
+     background: url('../assets/images/telegram_w.png') center/contain no-repeat content-box;
 }
 
-@media (max-width: 1198px) {
+
+
+@media (max-width: 767px) {
     .c-header {
-        &__btn-position{
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        &__contact {  
-            display: block;
-            text-align: left;
-        }
-    }
-}
-
-@media (max-width: 770px) {
-    .row {
-        margin: 0 !important;
-    }
-    .col-md-auto {
-        width: auto;
-        padding: 5px; 
-    }
-}
-
-@media (max-width: 770px) {
-    .c-header {
-        &__contact {  
-            display: block;  
-            text-align: left;             
-            margin-right: 0px;
-        }
-        
+        &__elements{
+             text-align: center;
+             margin-bottom: 35px;
+        }        
     }  
-    .btn_container{       
-        margin-bottom: 10px;    
-    }
-    .dropdown-lang{
-        margin-right: auto;
-        margin-left: auto;
-        margin-bottom: 20px;
-        margin-top: 10px; 
-    }
     .logo{
         width: 100%;
         text-align: center;
@@ -151,36 +163,27 @@
         margin-right: auto;
         margin-left: auto;
     }
+
 }
-@media (max-width: 482px) {
+@media (max-width: 510px) {
     .c-header {
-        &__contact {            
-            text-align: center;             
-            margin-right: 0px;
-            width: 90vw;
+        &__contacts {  
+           display: block; 
+           margin: 25px auto;                 
         }
-        &__btn-position{
-            width: 100%;
+        &__contact { 
+           text-align: center;         
+        }   
+        &__elements{
+            text-align: center;
+            margin-bottom: 55px;
         }
-    }
-    
-    .btn_container{
-        width: 100%;  
-        margin-left: auto;
-        margin-right: auto;      
-        margin-bottom: 10px;    
-    }
-    .logo{
-        width: 100%;
-        text-align: center;
-        margin-right: auto;
-        margin-left: auto;
-    }
-    .dropdown-lang{        
-        margin-right: auto;
-        margin-left: auto;
-        margin-bottom: 20px;
-        margin-top: 10px; 
+        &__langauges{
+            margin-right: 45px;
+        }
+
     }
 }
+
+
 </style>

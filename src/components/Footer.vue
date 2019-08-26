@@ -14,10 +14,12 @@
 	                        </span>
 	                    </div>
 	                    <div class="footer__contact">
-	                        <span class="footer__icon phone"></span>
-	                        <span class="footer__contact-text">
-	                            +38 (050) 123-45-67
-	                        </span>
+	                        <span class="c-header__icon phone"></span>
+                            <span class="c-header__icon viber"></span>
+                            <span class="c-header__icon telegram"></span>
+                            <span class="c-header__contact-text">
+                                +38 (050) 123-45-67
+                            </span>
 	                    </div>
 	                </div>
 	            </div>
@@ -25,16 +27,20 @@
 	    </div> 
 	    <div class="footer__top">
 	    	<div class="container">
-	    		<div class="row col-md-12">
-	    			<div class="footer__text footer__text-valign">
-		    			&copy; 2017  
-		    		</div>
-		    		<div class="footer__social-media">
-			    		<div class="footer__sm-icon vk float-right"></div>
-			    		<div class="footer__sm-icon fb float-right"></div>
-			    		<div class="footer__sm-icon tw float-right"></div>
-			    		<div class="footer__sm-icon in float-right"></div> 
-		    		</div>
+	    		<div class="row">
+	    			<div class="col-md-6 d-flex align-items-center">
+		    			<div class="footer__text">
+			    			&copy; 2017  
+			    		</div>
+					</div>	
+			    	<div class="col-md-6">
+			    		<div class="footer__social-media">
+				    		<div class="footer__sm-icon vk"></div>
+				    		<div class="footer__sm-icon fb"></div>
+				    		<div class="footer__sm-icon tw"></div>
+				    		<div class="footer__sm-icon in"></div> 
+			    		</div>	
+	    			</div>	    			
 	    		</div>	    		
 	    	</div>
 	    </div> 
@@ -70,9 +76,8 @@
 	    }
 	    &__social-media{
 			margin-top: 20px;
-			margin-bottom: 20px;
-			margin-right: 0;
-			margin-left: auto;
+			margin-bottom: 20px;	
+			text-align: right;		
 		}
 		&__sm-icon{
 			width: 38px;
@@ -83,10 +88,7 @@
 		&__text{
 			color: @text;
 			font-family: Muller;
-		}
-		&__text-valign{
-			margin-top: auto;
-			margin-bottom: auto;
+			text-align: left;					
 		}
 		&__brdr-btm{
 			border-bottom: 1px solid @footerSeparator;
@@ -110,14 +112,8 @@
 	.in{
 		background: url(../assets/images/linkedin.png) no-repeat center center/cover;
 	}
-	.email{
-	     background: url('../assets/images/email_icon.png') center/cover no-repeat content-box;
-	}
-	.phone{
-	     background: url('../assets/images/phone_icon.png') center/cover no-repeat content-box;
-	}
 
-	@media (max-width: 770px) {
+	@media (max-width: 767px) {
 	    .footer {
 	        &__contact {  
 	            display: block;  
@@ -136,7 +132,23 @@
 		        padding: 20;
 		        margin-right: auto;
 		        margin-left: auto;
-	    	}	        
+	    	}	
+	    	&__text{
+	    		display: block;
+	    		width: 100%;
+	    		text-align: center;
+	    		margin-top: 30px;
+	    	}
+	        &__social-media{
+	        	display: block;	 
+	        	text-align: center;
+	        	margin-top: 10px;       	
+
+	        	margin-bottom: 30px;				
+			}
+			&__sm-icon{
+				margin: 8px;
+			}        
 	    }  
 	    .row {
 	        margin: 0 !important;
@@ -148,40 +160,6 @@
 	}
 
 
-	@media (max-width: 482px) {
-	    .footer {
-	        &__contact { 	           
-	            text-align: center;             
-	            margin-right: 0px;
-	            width: 90vw;
-	        }
-	        &__logo{
-	        	width: 100%;
-		        text-align: center;		        
-		        margin-right: auto;
-		        margin-left: auto;
-	        }
-	    }
-	}
-	@media (max-width: 360px) {
-	    .footer {
-	    	&__text{
-	    		display: block;
-	    		width: 100%;
-	    		text-align: center;
-	    		margin-top: 30px;
-	    	}
-	        &__social-media{
-	        	display: block;	 
-	        	margin-top: 10px;       	
-	        	margin-right: auto;
-	        	margin-left: auto;
-	        	margin-bottom: 30px;				
-			}
-			&__sm-icon{
-				margin: 8px;
-			}
-	    }
-
-	}
+	
+	
 </style>
