@@ -20,6 +20,8 @@
 @cardBorder: #d2d1d1;
 @footerSeparator: #464c55;
 
+@err: #ff0000;
+
 
 .orange_btn{
 	text-decoration: none;
@@ -49,12 +51,26 @@
 	text-transform: uppercase;
 	padding: 10px 25px 8px 25px;		
 }
-.white_btn:hover{
-	//background-color: @darkerBackground;	
+.white_btn:hover{		
 	text-decoration: underline;	
 	cursor: pointer;
 	color: @darkText !important;
 }
 a{
 	cursor: pointer;
+}
+
+.text{
+	color: @darkText;
+	font-size: 14px;
+	text-align: left;
+}
+.err-text{
+	color: @err;
+	font-size: 14px;
+	text-align: left;
+}
+.err-form{
+	border-color: @err;
+	box-shadow: 0 0 3px 0 @err;
 }
