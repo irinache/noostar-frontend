@@ -1,5 +1,5 @@
 <template>
-	<div class="course-card" id="course-card">
+	<div class="course-card" id="course-card">		
 		<div class="course-card__head">
 			<div class="course-card__head-text">
 				Начало обучения:
@@ -46,8 +46,7 @@
 				</p>
 			</div>
 			<div class="course-card__info-btn">
-				<a href="#" class="orange_btn course-card__btn-pos">Записаться на курс</a>
-				
+				<button type="button" class="orange_btn course-card__btn-pos" @click="showModalCourses">Записаться на курс</button>			
 			</div>
 			
 		</div>
@@ -55,7 +54,13 @@
 </template>
 
 <script>
+
+	import ModalAvailableCourses from './ModalAvailableCourses.vue'
+
 	export default {
+		components:{
+			ModalAvailableCourses
+		},
 		props:{			
 			date: String,
 			course_name: String,
@@ -64,9 +69,15 @@
 			teacher: String
 		},
 		data(){
-			return{				
+			return{	
+				isModalVisible : false,			
 			}
-		}		
+		},
+		methods: {
+    		showModalCourses() {    			
+    			this.$root.$emit('modal-on');	        	
+	      	}
+	    },	
 	}
 </script>
 
@@ -78,7 +89,8 @@
 		margin: 0;
 		padding: 0;
 	}
-	.course-card{		
+	.course-card{	
+		
 		height: 455px;
 		width: 310px;
 		margin: 15px;
@@ -160,7 +172,7 @@
 			border-bottom:  1px solid @cardBorder;
 		}
 		&__info-btn{
-			margin-top: 25px;
+			margin-top: 16px;
 			text-align: center;
 			margin-bottom: 10px;
 			color: @lightText;

@@ -8,7 +8,7 @@
 				<label class="contact-us__label">Код подтверждения:</label>
 				<input class="contact-us__input" v-model="code" type="text" id="code">
 			</div>			
-			<input type="submit" value="Войти" class="orange_btn form__btn-position">	
+			<input type="submit" value="Отправить" class="orange_btn form__btn-position">	
 			<a href="javascript:history.go(-1)" class="white_btn form__btn-position">Отмена</a>
 		</form>
 	</div>		

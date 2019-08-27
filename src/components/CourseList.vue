@@ -176,7 +176,8 @@ export default {
 	}	
 
 	.course-list{
-		padding-bottom: 90px;		
+		padding-bottom: 90px;	
+		z-index: 20;	
 		&__slider{
 			font-size: 0; 
 			overflow: hidden;

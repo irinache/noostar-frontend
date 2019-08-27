@@ -87,7 +87,7 @@
 
 	h3{
 		font-family: Muller Medium;
-		font-size: 18px;
+		font-size: 18px !important;
 		margin-bottom: 20px;
 	}
 
@@ -97,5 +97,5 @@
 				border-right: 0;				
 			}			
 		}	
-	}
+	}	
 </style>

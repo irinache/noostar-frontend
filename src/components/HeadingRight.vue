@@ -46,4 +46,9 @@
 			font-size: 28px;
 		}		
 	}
+	@media (max-width: 578px) {
+	    .heading-left h2{
+			font-size: 24px;
+		}		
+	}
 </style>

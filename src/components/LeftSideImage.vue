@@ -39,4 +39,9 @@ export default {
 		right: 80px;
 		text-align: left;
 	}
+	@media (max-width: 767px) {
+	    .left-side-image{
+			display: none;	
+		}
+	}
 </style>

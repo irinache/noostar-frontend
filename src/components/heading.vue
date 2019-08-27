@@ -28,6 +28,7 @@
 	.heading{
 		position: relative;
 		margin: 66px auto 50px auto;
+		padding: 0.1px;
 	}
 	.heading:before {
 	    content: " ";
@@ -68,6 +69,9 @@
 		}
 	}
 	@media (max-width: 578px) {
+		.heading h2{
+			font-size: 24px;
+		}
 	    .heading:before {	   
 		    width: 200px;	   
 		}

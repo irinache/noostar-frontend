@@ -1,18 +1,27 @@
 <template>	
-	<div class="form ">
-		<HeadingRight class="form__margin" text="Вход"/>
-		<form @submit = "submit">
+	<div class="form">
+		<HeadingRight class="form__margin" text="Регистрация"/>
+		<form @submit = "submit" action="/register/step-2">
+			
 			<p id="err-msg" class="err-text form__text-margin">Error text</p>
+			<label class="text form__text-margin">Заполните регистрационную форму. </label>
 			<div class="contact-us__form-group">
 				<label class="contact-us__label">Электронная почта:</label>
 				<input class="contact-us__input" v-model="email" type="text" id="email">
 			</div>
 			<div class="contact-us__form-group">
-				<label class="contact-us__label float-left">Пароль:</label>
-				<router-link to="/forgot-password/step-1" class="contact-us__link float-right">Забыли пароль?</router-link>
-				<input class="contact-us__input" v-model="password" type="password" id="password">
+				<label class="contact-us__label">Номер телефона:</label>
+				<input class="contact-us__input" v-model="phone_num" type="text" id="phone_num">
 			</div>
-			<input type="submit" value="Войти" class="orange_btn form__btn-position">	
+			<div class="contact-us__form-group">
+				<label class="contact-us__label float-left">Пароль:</label>
+				<input class="contact-us__input" v-model="password1" type="password" id="password1">
+			</div>
+			<div class="contact-us__form-group">
+				<label class="contact-us__label float-left">Повторите пароль:</label>
+				<input class="contact-us__input" v-model="password2" type="password" id="password2">
+			</div>
+			<input type="submit" value="Зарегистрироваться" class="orange_btn form__btn-position">	
 			<a href="javascript:history.go(-1)" class="white_btn form__btn-position">Отмена</a>
 		</form>
 	</div>		
@@ -29,7 +38,9 @@ export default {
 	data: function(){
   		return {
   			email: "",
-  			password: "",
+  			phone_num: "",
+  			password1: "",
+  			password2: "",
   		}
   	},
   	methods: {
@@ -55,18 +66,7 @@ export default {
 			margin-bottom: 30px;
 		}
 		&__margin{
-			margin-bottom: 50px;
-		}
-	}
-	@media (max-width: 767px) {
-	    .form{
-			margin-bottom: 50px !important;
-			margin-top: 50px !important;			
-		}
-	}
-	@media (max-width: 440px) {
-	    .form{
-			width:80% !important ;			
+			margin-bottom: 20px;
 		}
 	}
 </style>
