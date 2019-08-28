@@ -3,9 +3,11 @@
     <div class="c-header__top">
         <div class="container">
             <div class="row align-items-center">
-                <a href="#" class="col-md-4 logo">
-                    <img src="../assets/images/logo.png" alt="logo"/>
-                </a>
+                <div class="col-md-4 logo">
+                    <router-link to="/">
+                        <img src="../assets/images/logo.png" alt="logo"/>
+                    </router-link>                    
+                </div>                
                 <div class="col-md-8 c-header__elements">
                     <div class="c-header__contacts">
                         <div class="c-header__contact">

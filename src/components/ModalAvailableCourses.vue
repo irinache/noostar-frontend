@@ -1,43 +1,55 @@
-<template>	
-	<div class="modal-block" v-show="isShowModalCourses">
-		<div class="blackout" @click="closeModalCourses" >			
-		</div>	
-		<div class="modal-courses">
-			<heading text = "Доступные курсы" color="white"/>	
-			<p class="text text-center">Выберите режим обучения и интересующие вас курсы.</p>
-			
-			<select class="custom_select">
-				<option class="custom_option">В группе</option>
-				<option class="custom_option">Индивидуально</option>
-			</select>
+<template>		
+		<div class="blackout"  @click="closeModalCourses" v-show="isShowModalCourses">		
+			<div class="modal-courses" @click.stop="">
 
-			<ul>
-				<li class="course" v-for="course in courses">	
-					<div class="modal__img">
+				<heading text = "Доступные курсы" color="white"/>
+
+				<div class="close-btn" @click="closeModalCourses">					
+				</div>
+				<form action="/register/step-1" class="modal-form" submit="submit">
+					<p class="text text-center">Выберите режим обучения и интересующие вас курсы.</p>
+
+					<select class="custom_select modal-select-position">
+						<option class="custom_option">В группе</option>
+						<option class="custom_option">Индивидуально</option>
+					</select>
+
+
+					<div class="course-container clearfix" v-for="course in courses">
+						<label class="checkbox-container" >
+							<input type="checkbox" checked="checked">
+							<span class="checkmark"></span>
+
+							<div class="modal__img">
+								
+							</div>
+							<div class="course-card__info-title">
+								Курс:
+							</div>		
+							<div class="course-card__course-name">
+								{{course.course_name}}
+							</div>	
+						</label>
 						
+						<router-link to="/course" target="_blank" class="orange_btn modal-details-btn" @click="showCourseDetails(course.id)">
+							Подробнее
+						</router-link>					  
 					</div>
-					<div class="course-card__info-title">
-						Курс:
-					</div>		
-					<div class="course-card__course-name">
-						{{course.course_name}}
-					</div>	
-					<button class="orange_btn" @click="showCourseDetails(course.id)">
-						Подробнее
-					</button>	
-				</li>	
-			</ul>
 
-			<router-link to="/register/step-1">Записаться</router-link>
-			<button @click="closeModalCourses">
-				Отмена
-			</button>
-			
-		</div>
-					
-		</div>	
+				<input type="submit" class="orange_btn modal-main-btn" value="Записаться">
+				<div class="white_btn modal-cancel-btn" @click="closeModalCourses">
+					Отмена
+				</div>
+
+				</form>
+
+
 				
-	</div>		
+
+					
+
+			</div>	
+		</div>	
 </template>
 
 <script>
@@ -99,21 +111,28 @@ export default {
   		}
   	},
   	methods: {
-  		showModalCourses() {    		
-	        this.isShowModalCourses = true;
+  		showModalCourses() {   				
+	        this.isShowModalCourses = true;	
+	        document.body.classList.add("lock");	       
 	    },
   		closeModalCourses(){
   			this.isShowModalCourses = false;
+  			document.body.classList.remove("lock");  			
   		},
   		showCourseDetails(id){
+  			alert("i work")
+  		},
+  		submit(){
 
   		}
   	},
   	mounted(){
   		this.$root.$on('modal-on', () => {
-  			this.showModalCourses();
-  			console.log("got it");
+  			this.showModalCourses();  			
   		});
+  	},
+  	destroyed(){
+  		this.closeModalCourses();
   	}
 }
 </script>
@@ -121,39 +140,28 @@ export default {
 <style lang="less">
 	@import '../assets/styles/index.less';
 	.blackout{
-		position: fixed;
-		//overflow: hidden;
-		top:0;
-		left: 0;
-		//z-index: 90;
-		background-color: rgba(0,0,0,0.5);
-		width: 100vw;
-		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.5);
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  overflow: auto;		 
+		  padding: 0 20px;
+		  z-index: 1050;		
 	}
 	.modal-courses{
-		z-index: 91;
+		//z-index: 1051;
 		position: relative;
-		margin-top: 100px;
-		overflow: scroll;
-		margin-right: auto;
-		margin-left: auto;
+		margin: 70px auto;		
 		padding: 0.1px;
 		width: 80%;
-		height: 700px;
+		//height: 1700px;
 		background-color: @lightBackground;
-	}
-	.modal-block{
-		position: fixed;
-		//overflow: hidden;
-		top:0;
-		left: 0;
-		z-index: 1050;
-		//background-color: rgba(0,0,0,0.5);
-		width: 100vw;
-		height: 100vh;
-	}
+	}	
 	.custom_select{
 		position: relative;
+		display: block;
 		padding: 5px 10px;
 		width: 180px;
 		text-align: left;
@@ -171,7 +179,7 @@ export default {
 			width: 50px;
 			float: left;
 			margin: 11px;
-		}
+			margin-left: 90px;		}
 	}
 
 	ul{
@@ -186,6 +194,127 @@ export default {
 		border-radius: 4px;
 		padding: 10px;
 		margin:10px; 
+	}
+	.close-btn{
+		position: absolute;
+		top:30px;
+		right: 30px;
+		width: 20px;
+		height: 20px;
+		background: url("../assets/images/cross.png");
+		cursor: pointer;
+	}
+	.lock{		
+		overflow: hidden;
+	}
+	.modal-main-btn{
+		width: 40%;
+		display: block;
+		margin: 30px auto 20px auto;
+	}
+	.modal-cancel-btn{
+		margin: 20px auto 50px auto;
+	}
+
+	/* The container */
+	.checkbox-container {
+	  display: block;
+	  position: relative;
+	  display: inline-block;
+
+		float: left;
+
+	  
+	  margin: 0px auto;
+	  cursor: pointer;
+	  font-size: 22px;
+	  width: 70%;
+	  
+	  -webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+	}
+
+	/* Hide the browser's default checkbox */
+	.checkbox-container input {
+	  position: absolute;
+	  opacity: 0;
+	  cursor: pointer;
+	  height: 0;
+	  width: 0;
+	}
+
+	/* Create a custom checkbox */
+	.checkmark {
+	  position: absolute;
+	  top: 50%;
+	  left: 20px;
+	  transform: translateY(-50%);
+	  height: 35px;
+	  width: 35px;
+	  background-color: @lightBackground;
+	  border: 1px solid @border;
+
+	  border-radius: 2px;
+	}
+
+	/* On mouse-over, add a grey background color */
+	.checkbox-container:hover input ~ .checkmark {
+	  background-color: @darkerBackground;
+	}
+
+	/* When the checkbox is checked, add a blue background 
+	.course-container input:checked ~ .checkmark {
+	  background-color: @lightBackground;
+	   border: 1px solid @border;
+	   border-radius: 2px;
+	}*/
+
+	/* Create the checkmark/indicator (hidden when not checked) */
+	.checkmark:after {
+	  content: "";
+	  position: absolute;
+	  display: none;
+	}
+
+	/* Show the checkmark when checked */
+	.checkbox-container input:checked ~ .checkmark:after {
+	  display: block;
+	}
+
+	/* Style the checkmark/indicator */
+	.checkbox-container .checkmark:after {
+	  left: 10px;
+	  top:0px;
+	  width: 12px;
+	  height: 28px;
+	  border: solid @mainOrange;
+	  border-width: 0 4px 4px 0;
+	  -webkit-transform: rotate(45deg);
+	  -ms-transform: rotate(45deg);
+	  transform: rotate(45deg);
+	}
+	.modal-details-btn{
+		width:150px;
+		float: right;
+		margin-right: 20px;
+		margin-top: 20px;
+	}
+	.course-container{
+		width: 100%;
+		background-color: @darkerBackground;
+	    border: 1px solid @border;
+	    border-radius: 4px;
+	    margin-top: 20px;
+	}
+	.modal-select-position{
+
+	}
+	.modal-form{
+		width: 80%;
+		margin-right: auto;
+		margin-left: auto;
 	}
 	
 </style>

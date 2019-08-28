@@ -3,9 +3,11 @@
 	    <div class="footer__top footer__brdr-btm">
 	        <div class="container">
 	            <div class="row align-items-center ">
-	                <a href="#" class="col-md-4 footer__logo">
-	                    <img src="../assets/images/logo.png" alt="logo"/>
-	                </a>
+	                <div class="col-md-4 footer__logo">
+                    <router-link to="/">
+                        <img src="../assets/images/logo.png" alt="logo"/>
+                    </router-link>                    
+                </div>
 	                <div class="col-md-8 text-right footer__contacts">	                    
 	                    <div class="footer__contact">
 	                        <span class="footer__icon email"></span>

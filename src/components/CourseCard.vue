@@ -68,11 +68,6 @@
 			price: String,
 			teacher: String
 		},
-		data(){
-			return{	
-				isModalVisible : false,			
-			}
-		},
 		methods: {
     		showModalCourses() {    			
     			this.$root.$emit('modal-on');	        	

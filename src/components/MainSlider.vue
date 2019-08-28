@@ -18,7 +18,7 @@
 						и интернет-технологиям для людей любого
 						возраста и с любой базой знаний					
 					</p>
-					<a href="#" class="orange_btn btn-animation">Учиться</a>
+					<a href="#" @click="showModalCourses" class="orange_btn btn-animation">Учиться</a>
 				</div>
 			</div>
 			<div class="main-slider__slide-single">				
@@ -132,7 +132,10 @@
 			},
 			handleResize: function(event){				
 				this.reloadSlider();
-			}					
+			},
+			showModalCourses() {    			
+    			this.$root.$emit('modal-on');	        	
+	      	}					
 		},
 		mounted: function () {
 		    this.reloadSlider();

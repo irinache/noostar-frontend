@@ -9,6 +9,7 @@ import ForgotPasswordFormStep3 from './components/ForgotPasswordFormStep3.vue'
 import Register from './components/Register.vue'
 import RegisterFormStep1 from './components/RegisterFormStep1.vue'
 import RegisterFormStep2 from './components/RegisterFormStep2.vue'
+import Course from './components/Course.vue'
 
 Vue.use(Router)
 
@@ -66,6 +67,11 @@ export default new Router({
         component: RegisterFormStep2
       },
       ]
+    },
+    {
+      path: '/course',
+      name: 'course',
+      component: Course
     },
 
    

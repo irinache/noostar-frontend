@@ -1,5 +1,5 @@
 <template>	
-	<div>		
+	<div>
 		<Header />
 		<MainSlider />		
 		<LearningPrinciples />
@@ -35,6 +35,6 @@ export default {
 </script>
 
 <style>
-	@import '../assets/styles/index.less';
+	@import '../assets/styles/index.less';	
 </style>
 
