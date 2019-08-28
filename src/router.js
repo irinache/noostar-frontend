@@ -69,7 +69,7 @@ export default new Router({
       ]
     },
     {
-      path: '/course',
+      path: '/course/:id',
       name: 'course',
       component: Course
     },

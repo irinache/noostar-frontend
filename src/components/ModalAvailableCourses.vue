@@ -17,7 +17,7 @@
 
 					<div class="course-container clearfix" v-for="course in courses">
 						<label class="checkbox-container" >
-							<input type="checkbox" checked="checked">
+							<input type="checkbox">
 							<span class="checkmark"></span>
 
 							<div class="modal__img">
@@ -31,7 +31,7 @@
 							</div>	
 						</label>
 						
-						<router-link to="/course" target="_blank" class="orange_btn modal-details-btn" @click="showCourseDetails(course.id)">
+						<router-link :to="{ name: 'course', params: { id: 1 }}" target="_blank" class="orange_btn modal-details-btn" @click="showCourseDetails(course.id)">
 							Подробнее
 						</router-link>					  
 					</div>
@@ -308,13 +308,31 @@ export default {
 	    border-radius: 4px;
 	    margin-top: 20px;
 	}
-	.modal-select-position{
-
-	}
 	.modal-form{
 		width: 80%;
 		margin-right: auto;
 		margin-left: auto;
+	}
+	@media (max-width: 913px) {	    
+		.modal{
+			&__img{				
+				margin-left: 70px;		
+			}
+		}	
+		.checkbox-container {
+		  
+		  width: 60%;
+		  
+		  
+		}
+	}
+	@media (max-width:700px) {	    
+		.modal-courses{	
+			width: 100%;		
+		}
+		.modal-details-btn{
+			width:130px;
+		}
 	}
 	
 </style>

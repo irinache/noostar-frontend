@@ -1,12 +1,17 @@
 <template>
   <div id="app">
-    <router-view/>  
+    <router-view/> 
+    <ModalAvailableCourses /> 
   </div>
 </template>
 
 <script>
+import ModalAvailableCourses from './components/ModalAvailableCourses.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {   
+    ModalAvailableCourses,   
+  }
 }
 </script>
 
