@@ -1,5 +1,5 @@
 <template>
-	<div class="course-card" id="course-card">		
+	<router-link :to="{ name: 'course', params: { id: 1 }}" target="_blank" class="course-card" id="course-card">		
 		<div class="course-card__head">
 			<div class="course-card__head-text">
 				Начало обучения:
@@ -50,7 +50,7 @@
 			</div>
 			
 		</div>
-	</div>
+	</router-link>
 </template>
 
 <script>
@@ -85,7 +85,7 @@
 		padding: 0;
 	}
 	.course-card{	
-		
+		text-decoration: none;
 		height: 455px;
 		width: 310px;
 		margin: 15px;
@@ -172,6 +172,11 @@
 			margin-bottom: 10px;
 			color: @lightText;
 		}
+	}
+	.course-card:hover{	
+		text-decoration: none;
+		box-shadow: 0 0 6px rgba(0,0,0,0.1); 
+		border-color: @infoTitle;
 	}	
 	
 	.clearfix:after{
