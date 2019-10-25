@@ -21,16 +21,16 @@
                         <div class="c-header__contact">
                             <span class="c-header__icon email"></span>
                             <span class="c-header__contact-text">
-                            noostar@gmail.com
+                            noostar@ukr.net
                             </span> 
                         </div>   
                     </div>                    
                     <div class="c-header__langauges">
-                        <span id="ua" class="c-header__lang" @click="chooseLang(true, false)">UA</span>
-                        <span id="ru" class="c-header__lang current-lang" @click="chooseLang(false, true)">RU</span>
+                        <span id="ua" class="c-header__lang" @click="chooseLang('uk')">UA</span>
+                        <span id="ru" class="c-header__lang current-lang" @click="chooseLang('ru')">RU</span>
                     </div> 
                      <router-link to="/login" class="orange_btn c-header__btn-position">
-                         Войти
+                         {{ 'signin' | translate }}
                      </router-link>
                
                 </div>               
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+    import Vue from 'vue';
     export default{
         data: function () {
             return{
@@ -48,19 +49,22 @@
             }               
         },
         methods:{           
-            chooseLang: function(ua_value, ru_value){
-               if(ua_value){
+            chooseLang: function(value){
+               if(value == "uk"){
                     ru.classList.remove("current-lang");
                     ua.classList.add("current-lang");
                }  
-               if(ru_value){
+               if(value == "ru"){
                     ua.classList.remove("current-lang");
                     ru.classList.add("current-lang");
-               }                              
+               }
+               Vue.prototype.setCookie("noostarlang", value, 365);
+               Vue.i18n.set(value);                              
             }
         },
         mounted: function () {           
-            this.chooseLang(false, true);
+//            alert(Vue.i18n.locale());
+            this.chooseLang(Vue.i18n.locale());
         } 
     }
 </script>

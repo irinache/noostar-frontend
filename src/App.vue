@@ -2,15 +2,21 @@
   <div id="app">
     <router-view/> 
     <ModalAvailableCourses /> 
+    <Event />
   </div>
 </template>
 
 <script>
 import ModalAvailableCourses from './components/ModalAvailableCourses.vue'
+import Event from './components/Event.vue'
+
+// <Event />
+
 export default {
   name: 'App',
   components: {   
     ModalAvailableCourses,   
+    Event,
   }
 }
 </script>

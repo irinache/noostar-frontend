@@ -1,19 +1,19 @@
 <template>	
 	<div class="form ">
-		<HeadingRight class="form__margin" text="Вход"/>
+		<HeadingRight class="form__margin" text="enter label"/>
 		<form @submit = "submit">
 			<p id="err-msg" class="err-text form__text-margin">Error text</p>
 			<div class="contact-us__form-group">
-				<label class="contact-us__label">Электронная почта:</label>
+				<label class="contact-us__label">{{ "e-mail" | translate }}:</label>
 				<input class="contact-us__input" v-model="email" type="text" id="email">
 			</div>
 			<div class="contact-us__form-group">
-				<label class="contact-us__label float-left">Пароль:</label>
-				<router-link to="/forgot-password/step-1" class="contact-us__link float-right">Забыли пароль?</router-link>
+				<label class="contact-us__label float-left">{{ "Password label" | translate }}:</label>
+				<router-link to="/forgot-password/step-1" class="contact-us__link float-right">{{ "forget password label" | translate }}</router-link>
 				<input class="contact-us__input" v-model="password" type="password" id="password">
 			</div>
-			<input type="submit" value="Войти" class="orange_btn form__btn-position">	
-			<a href="javascript:history.go(-1)" class="white_btn form__btn-position">Отмена</a>
+			<button type="submit" class="orange_btn form__btn-position"> {{ "signin" | translate }} </button>
+			<a href="javascript:history.go(-1)" class="white_btn form__btn-position">{{ "Cancel label" | translate}}</a>
 		</form>
 	</div>		
 </template>

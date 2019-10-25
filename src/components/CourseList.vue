@@ -1,21 +1,22 @@
 <template>
 	<div class="container-fluid course-list">
 		<div class="row">
-			<Heading text = "Список курсов" color="white"/>			
+			<Heading text="Courses list" color="white"/>			
 		</div>
 		<div id="course-list__left" class="course-list__arr course-list__left" v-on:click = "left">
 				
 		</div>
 		<div class="course-list__slider">
-			<div class="course-list__cards" >
-				<CourseCard v-for="course in courses"
-				v-bind:key="course.course_name"
-				v-bind:date="course.date" v-bind:course_name="course.course_name"
-				v-bind:duration="course.duration"
-				v-bind:price="course.price"
-				v-bind:teacher="course.teacher"
-				/>		
-			</div>	
+                        <div class="course-list__cards" >
+                                <CourseCard v-for="course in allCoursesInfo"
+                                v-bind:key="course.uuid"
+                                v-bind:date="temp" v-bind:course_name="'title' + course.uuid"
+                                v-bind:duration="'duration' + course.uuid"
+                                v-bind:price="pricetrans(course.uuid)"
+                                v-bind:teacher="temp"
+                                v-bind:cover="coverurl(course.uuid)"
+                                />
+                        </div>
 		</div>
 						
 		<div id="course-list__right" class="course-list__arr course-list__right" v-on:click = "right">
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import Heading from './heading.vue'
 import CourseCard from './CourseCard.vue'
 export default {
@@ -40,52 +42,29 @@ export default {
 			r_arr: true,
 			l_arr: false,			
 			offset: 0,
-			courses: [
-				{ 
-					date: '23.05.2019',
-					course_name: 'Объектно-ориентированное программирование',
-					duration: '70 часов',
-					price: '5000 грн',
-					teacher: 'Козаченко А. А.'
-				},
-				{
-					date: '26.06.2019',
-					course_name: 'Тестирование',
-					duration: '74 часов',
-					price: '5500 грн',
-					teacher: 'Иванов В. В.'
- 
-				},
-				{
-					date: '28.06.2019',
-					course_name: 'Операционные системы',
-					duration: '65 часов',
-					price: '6500 грн',
-					teacher: 'Петров И. И.'
- 
-				},
-				{
-					date: '06.08.2019',
-					course_name: 'Веб-дизайн',
-					duration: '80 часов',
-					price: '7500 грн',
-					teacher: 'Сидоров В.К.'
- 
-				},
-				{
-					date: '29.09.2019',
-					course_name: 'Java Core',
-					duration: '60 часов',
-					price: '5000 грн',
-					teacher: 'Иванов В. В.' 
-				}
-			]
 		}				
 	},
 	beforeDestroy: function () {
     	window.removeEventListener('resize', this.handleResize)
     },
-	methods:{	
+	methods:{
+                pricetrans(uuid) {
+                    let c = 'price'+uuid;
+                    let s = this.$t(c);
+//                    alert(s);
+                    if ((c == s) || (s == "0.00"))  { s=this.$t('Free');}
+                    return s;
+                },
+                coverurl(uuid) {
+                    let c='cover'+uuid;
+                    let s=this.$t(c);
+                    if (s == c) { return require('../assets/images/course_img.jpg'); }
+                    else { return s; }
+                },
+                concat: function(title, uuid){
+                    var result = [title + uuid];
+                    return result;
+                },	
 		getNum: function(str){			
 			return +str.replace(/[^\-\d]+/g, "");
 		},
@@ -158,12 +137,18 @@ export default {
 		}
 	},
 	mounted(){
+                Vue.i18n.set(Vue.i18n.locale());
 		this.reloadSlider();
 
 		this.$nextTick(function() {
 			window.addEventListener('resize', this.handleResize);
 		});				
-	},	
+	},
+        computed: {
+          allCoursesInfo() {
+            return this.$store.getters.allCoursesInfo;
+          },
+        }
 }
 </script>
 

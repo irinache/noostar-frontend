@@ -2,51 +2,52 @@
 	<router-link :to="{ name: 'course', params: { id: 1 }}" target="_blank" class="course-card" id="course-card">		
 		<div class="course-card__head">
 			<div class="course-card__head-text">
-				Начало обучения:
+				{{ 'Course start label' | translate }}:
 				<span class="course-card__date">
-				{{date}}
+				{{ date | translate }}
 				</span>
-				<span class="orange_btn course-card__btn-pos">Идет набор</span>			
+				<span class="orange_btn course-card__btn-pos">{{ 'Course start' | translate}}</span>			
 			</div>			
 		</div>
-		<div class="course-card__image">			
+		<div class="course-card__image">
+			<img class="course-card__image__cover" :src=cover>
 		</div>		
 		<div class="course-card__course-info">
 			<p class="course-card__info-title">
-				Курс:
+				{{ 'Course label' | translate }}:
 			</p>
 			<div class="course-card__course-name">
-				{{course_name}}
+				{{course_name | translate }}
 			</div>
 			<div class="clearfix">
 				<div class="course-card__duration">
 					<p class="course-card__info-title">
-						Длительность:
+						{{ 'Course duration label' | translate }}:
 					</p>
 					<p class="course-card__info-text">
-						{{duration}}
+						{{duration | translate}}
 					</p>
 				</div>
 				<div class="course-card__price">
 					<p class="course-card__info-title">
-						Цена обучения:
+						{{ 'Course price label' | translate }}:
 					</p>
 					<p class="course-card__info-text">
-						{{price}}
+						{{ price }}
 					</p>
 				</div>
 			</div>
 			
 			<div class="course-card__teacher">
 				<p class="course-card__info-title">
-					Преподаватель:
+					{{ 'Course authors label' | translate }}:
 				</p>
 				<p class="course-card__info-text">
-					{{teacher}}
+					{{ teacher | translate }}
 				</p>
 			</div>
 			<div class="course-card__info-btn">
-				<button type="button" class="orange_btn course-card__btn-pos" @click="showModalCourses">Записаться на курс</button>			
+				<button type="button" class="orange_btn course-card__btn-pos" @click="showModalCourses">{{ 'Join btn' | translate }}</button>			
 			</div>
 			
 		</div>
@@ -55,24 +56,31 @@
 
 <script>
 
-	import ModalAvailableCourses from './ModalAvailableCourses.vue'
-
+	import ModalAvailableCourses from './ModalAvailableCourses.vue';
+        import Vue from 'vue';
 	export default {
 		components:{
 			ModalAvailableCourses
 		},
-		props:{			
+                data: {
+                    uurl: '/123',
+                },
+		props:{		
 			date: String,
 			course_name: String,
 			duration: String,
 			price: String,
-			teacher: String
+			teacher: String,
+			cover: String
 		},
 		methods: {
     		showModalCourses() {    			
     			this.$root.$emit('modal-on');	        	
-	      	}
-	    },	
+	      	},
+                mounted: function() {
+                    Vue.i18n.set(Vue.i18n.locale());
+                },
+	    },
 	}
 </script>
 
@@ -116,9 +124,14 @@
 		}
 		&__image{
 			width: 100%;
-			height: 145px;
-			background: url("../assets/images/course_img.jpg");
+			height: 180px;
+			/*background: url("../assets/images/course_img.jpg");*/
 			margin-top: -3px;
+			&__cover{
+				width: 100%;
+	                        height: 180px;
+				margin-top: -3px;
+			}
 		}
 		&__course-name{
 			font-family: Muller;

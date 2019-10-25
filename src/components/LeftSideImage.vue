@@ -1,6 +1,6 @@
 <template>	
 	<div class="left-side-image" :style="{'background-image': `url(${require('../assets/images/' + image_name + '.png')})`}">
-		<h1 class="img-text">{{text}}</h1>
+		<h1 class="img-text">{{text | translate }}</h1>
 	</div>		
 </template>
 

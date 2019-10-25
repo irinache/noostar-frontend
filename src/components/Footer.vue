@@ -37,10 +37,8 @@
 					</div>	
 			    	<div class="col-md-6">
 			    		<div class="footer__social-media">
-				    		<a href="#" class="footer__sm-icon vk"></a>
-				    		<a href="#" class="footer__sm-icon fb"></a>
-				    		<a href="#" class="footer__sm-icon tw"></a>
-				    		<a href="#" class="footer__sm-icon in"></a> 
+				    		<a href="https://www.facebook.com/noostarua/" class="footer__sm-icon fb"></a>
+	<!--- 			    		<a href="#" class="footer__sm-icon in"></a> --> 
 			    		</div>	
 	    			</div>	    			
 	    		</div>	    		
@@ -106,18 +104,12 @@
 		}
 	}
 
-	.vk{
-		background: url(../assets/images/Vkontakte.png) no-repeat center center/cover;
-	}
 	.fb{
 		background: url(../assets/images/Facebook.png) no-repeat center center/cover;
 	}
-	.tw{
-		background: url(../assets/images/Twitter.png) no-repeat center center/cover;
-	}
-	.in{
+/*	.in{
 		background: url(../assets/images/linkedin.png) no-repeat center center/cover;
-	}
+	}*/
 
 	@media (max-width: 767px) {
 	    .footer {

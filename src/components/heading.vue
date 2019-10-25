@@ -1,10 +1,11 @@
 <template>
 	<div class="heading" :class="color">
-		<h2>{{text}}</h2>
+		<h2>{{ text | translate }}</h2>
 	</div>
 </template>
 
 <script>
+	import Vue from 'vue';
 	export default{
 		props:{
 			text: String,

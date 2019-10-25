@@ -2,30 +2,30 @@
 	<div class="grey_bg contact-us">	
 		<div class="container justify-content-center">
 			<div class="row col-md-12 m-0">
-				<HeadingRight class="contact-us__heading-margin" text="Есть вопросы? Напишите нам"/>		
+				<HeadingRight class="contact-us__heading-margin" text="Contact title"/>		
 			</div>
-			<form @submit = "submit">
+			<form>
 				<div class="row m-0">
 					<div class="col-md-6">
 						<div class="contact-us__form-group">
-					        <label class="contact-us__label">Имя:</label>
+					        <label class="contact-us__label">{{ 'first name' | translate }}:</label>
 					        <input class="contact-us__input" v-model="name" type="text" id="name">
 					    </div>
 					    <div class="contact-us__form-group">
-					        <label class="contact-us__label">Телефон:</label>
+					        <label class="contact-us__label">{{'Phone number' | translate }}:</label>
 					        <input class="contact-us__input" v-model="phone" type="text" id="phone">
 					    </div>
 					</div>
 					<div class="col-md-6">
 					    <div class="contact-us__form-group">
-					        <label class="contact-us__label">Сообщение:</label>
+					        <label class="contact-us__label">{{ 'message' | translate}}:</label>
 					        <textarea class="contact-us__input contact-us__message" v-model="message" id="message"></textarea> 
 					    </div>
 					</div>	
 				</div>
 				<div class="row m-0">
 					<div class="col-md-12">
-						<input type="submit" value="Отправить заявку" class="orange_btn float-right contact-us__btn-position">	
+						<div class="orange_btn float-right contact-us__btn-position" @click="contactformSubmit">{{ 'send message' | translate }} </div>
 					</div>					
 				</div>	    
 			    
@@ -37,6 +37,8 @@
 </template>
 
 <script>
+	import Vue from 'vue'
+	import axios from 'axios'
 	import HeadingRight from './HeadingRight.vue'	
 	export default {
  		components: {
@@ -50,10 +52,30 @@
   			}
   		},
   		methods: {
-  			submit(e) {	
-	  			//submit code
-		    }
-  		}		
+  			contactformSubmit() {	
+				axios.post('http://noostar.dp.ua/api/sendmail/', {
+                                        "username": this.name,
+                                        "phone": this.phone,
+                                        "message": this.message
+                                })
+                                .then((response) => {
+                                        console.log(response.data);
+                                        if (response.data.status=='Ok'){
+                                                console.log(response.data.status);
+                                        }
+                                        else{
+                                                console.log(response.data.status);
+                                        }
+                                        this.name = "";
+                                        this.phone = "";
+                                        this.message = "";
+
+                                })
+		    	},
+  		},
+		//mounted(){
+		//	Vue.i18n.set(Vue.i18n.locale());
+		//},
   	}
 </script>
 

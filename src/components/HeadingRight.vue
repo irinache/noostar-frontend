@@ -1,15 +1,17 @@
 <template>
 	<div class="heading-left">
-		<h2 class="m-20">{{text}}</h2>
+		<h2 class="m-20">{{text | translate}}</h2>
 	</div>
 </template>
 
 <script>
+        import Vue from 'vue';
 	export default{
 		props:{
 			text: String
 		},
 		mounted(){
+                        Vue.i18n.set(Vue.i18n.locale());
 			document.querySelector(".heading")
 		}
 	}

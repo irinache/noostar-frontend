@@ -1,4 +1,4 @@
-<template>		
+\<template>		
 	<div class="blackout"  @click="closeModalCourses" v-show="isShowModalCourses">		
 		<div class="modal-courses" @click.stop="">
 			<heading text = "Available courses" color="white"/>
@@ -22,13 +22,13 @@
 						<router-link :to="{ name: 'course', params: { id: 1 }}" target="_blank" class="orange_btn modal-details-btn" @click="showCourseDetails(course.id)">
 							{{ 'Detalis label' | translate }}
 						</router-link>					  
-						<select class="custom_select modal-select-position" @change="chekboxChange(course.uuid, '', $event.target.value)">
-							<option class="custom_option" :value="empty">{{ 'not chosen' | translate}}</option>
-        	                                        <option class="custom_option" v-for="lform in learningForms" :value='lform.uuid'> {{"learningform"+lform.uuid | translate}}
+						<select class="custom_select modal-select-position" @change(course.uuid, type=$event.targer.value)">
+							<option class="custom_option">{{ 'not chosen' | translate}}
+        	                                        <option class="custom_option" v-for="lform in learningForms" :value=> {{"learningform"+lform.uuid | translate}}
 	                                        </select>
-                	                        <select class="custom_select modal-select-position" @change="chekboxChange(course.uuid, type=$event.target.value)">
-							<option class="custom_option" :value="empty">{{ 'not chosen' | translate}}</option>
-                        	                        <option class="custom_option" v-for="ltype in learningTypes" :value='ltype.uuid'>{{"learningtype"+ltype.uuid | translate}}
+                	                        <select class="custom_select modal-select-position" :id="{{form + course.uuid}}">
+							<option class="custom_option">{{ 'not chosen' | translate}}
+                        	                        <option class="custom_option" v-for="ltype in learningTypes">{{"learningtype"+ltype.uuid | translate}}
                                 	        </select>
 					</div>
 					<div class="orange_btn modal-main-btn" @click="showNextStep">{{"Next label" | translate }}</div>
@@ -66,8 +66,6 @@
 					<div class="orange_btn modal-main-btn" @click="showLastStep">{{"Next label" | translate }}</div>
 				</div>
 				<div id="step-3" v-show="step==3">
-				<p id="err-msg" class="err-text form__text-margin">{{ errorText  }}</p>
-
 							<label class="text form__text-margin">{{ 'Finish registration label' | translate}}</label>
 							<div class="contact-us__form-group">
 								<label class="contact-us__label">{{ 'Enter code label' | translate}}:</label>
@@ -112,25 +110,19 @@ export default {
   		}
   	},
   	methods: {
-		chekboxChange(uuid, type="", form=""){
-			if (uuid in this.courses){
-				this.courses[uuid]['active'] = !this.courses[uuid]['active'];
-                                if (type != ""){
-				        this.courses[uuid]['type'] = type;
-				}
-                                if (form != ""){
-                                        this.courses[uuid]['form'] = form;
-			        }
-                        }
+		chekboxChange(uuid, form="", type=""){
+			formid = '#form' + uuid;
+			form = document.querySelector(formid);
+			console.log(form);
+			if (courses.includes(uuid)){
+				this.courses[uuid][active] = !this.courses[uuid][active];
+				this.courses[uuid][type] = type;
+				this.courses[uuid][form] = form;
+			}
 			else{
-				this.courses[uuid] = {};
-				this.courses[uuid]['active'] = true;
-                                if (type != ""){
-                                        this.courses[uuid]['type'] = type;
-                                }
-                                if (form != ""){
-                                        this.courses[uuid]['form'] = form;
-                                }
+				this.courses[uuid][active] = true;
+				this.courses[uuid][type] = type;
+                                this.courses[uuid][form] = form;
 			}
 			console.log(this.courses);
 		},
@@ -154,111 +146,45 @@ export default {
   			alert("i work")
   		},
 		showNextStep() {
-			let check_type_form = true;
-			let check = false;
-			Object.values(this.courses).forEach(course => {
-				if (course['active'] == true){
-					console.log(course);
-					if ('type' in course && 'form' in course && course['type'] != 'empty' && course['form'] != 'empty'){
-						console.log('if');
-						check = true;
-					}
-					else{
-						console.log('else');
-						document.getElementById("err-msg").style.display = "block";
-						this.errorText = Vue.i18n.translate("error type or form was not selected");
-						check_type_form = false;
-						return;
-					}
-				}
-			});
-			if (!check_type_form){
-				return;
-			}
-			if (!check){
-				document.getElementById("err-msg").style.display = "block";
-                                this.errorText = Vue.i18n.translate("error nothing was selected");
+			if (Object.values(this.courses).includes(true)){
+				++this.step;
 			}
 			else{
-				document.getElementById("err-msg").style.display = "none";
-				++this.step;
+				document.getElementById("err-msg").style.display = "block";
+				this.errorText = Vue.i18n.translate("error nothing was selected");
 			}
 		},
 		showLastStep() {
-			console.log(this.email + " " + this.password1 + " " + this.phone_num + " " + this.password2 + " " + this.last_name + " " + this.first_name);
-			if (this.email != "" && this.phone_num != "" && this.password1 != "" && this.password2 != "" && this.first_name != "" && this.last_name != ""){
-				console.log('temp');
-				if (this.password1 != this.password2){
-					document.getElementById("err-msg").style.display = "block";
-                                	this.errorText = Vue.i18n.translate("error passwords do not match");
-				}
-				else{
-					axios.post('http://noostar.dp.ua/api/auth/code/', {'phone': this.phone_num, 'email': this.email})
- 	             				.then((response) => {
-             		                  	        console.log(response.data);
-                					if (response.data.status=='Ok'){
-								++this.step;
-							}
-							else{
-								console.log(response.data.message);
-								document.getElementById("err-msg").style.display = "block";
-                                        			this.errorText = Vue.i18n.translate(response.data.message);
-
-							}
-                			})
-					.catch (error => {
-                                        	console.log(error.response.data);
-						document.getElementById("err-msg").style.display = "block";
-                                                this.errorText = Vue.i18n.translate(error.response.data.message);
-                                	})
-				}
+			if (this.password1 != this.password2){
+				document.getElementById("err-msg").style.display = "block";
+                                this.errorText = Vue.i18n.translate("error passwords do not match");
 			}
 			else{
-				document.getElementById("err-msg").style.display = "block";
-                                this.errorText = Vue.i18n.translate("error fill all fields");
+				axios.post('http://noostar.dp.ua/api/auth/code/', {'phone': this.phone_num})
+ 	             			.then((response) => {
+                                	        console.log(response.data);
+                				if (response.data.status=='Ok'){
+							++this.step;
+						}
+						else{
+							console.log(response.data.status);
+						}
+                		})
 			}
 		},
   		finish(){
-			if (this.code == ""){
-				document.getElementById("err-msg").style.display = "block";
-                                this.errorText = Vue.i18n.translate("error code absent");
-				return;
-			}
-			var locale = Vue.i18n.locale()
                         let person = {
 				"email": this.email, 
 				"phone": this.phone_num, 
 				"password": this.password1, 
-				"first_name": {}, 
-				"last_name": {} 
+				"first_name": { 
+					//Vue.i18n.locale(): this.first_name 
+				}, 
+				"last_name": { 
+					//Vue.i18n.locale(): this.last_name 
+				} 
 			}
-			person["first_name"][locale] = this.first_name;
-			person["last_name"][locale] = this.last_name;
-			console.log(person);
-			let coursesList = [];
-			Object.keys(this.courses).forEach(key => {
-                        	if (this.courses[key]['active'] == true){
-					let temp = {}
-					temp['course_uuid'] = key;
-					temp['learningType_uuid'] = this.courses[key]['type'];
-					temp['learningForm_uuid'] = this.courses[key]['form'];
-					coursesList.push(temp);
-				}
-			});
-			let student = {}
-			student['code'] = this.code;
-			student['person'] = person;
-			student['courses'] = coursesList;
-			console.log(student);
-			axios.post('http://noostar.dp.ua/api/auth/register/', student)
-				.then((response) => {
-                                	console.log(response.data);
-				})
-				.catch (error => {
-            				console.log(error.response.data);
-					document.getElementById("err-msg").style.display = "block";
-                                        this.errorText = Vue.i18n.translate("error code wrong");
-          			})
+			axios.post('http://noostar.dp.ua/api/auth/code/', {'phone': this.phone_num})
   		}
   	},
   	mounted(){

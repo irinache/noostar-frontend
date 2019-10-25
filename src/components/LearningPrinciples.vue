@@ -6,10 +6,10 @@
 					<div class="learning-principles__icon mx-auto d-block" :class="p.img">					
 					</div>
 					<h3>
-						{{p.heading}}
+						{{ p.heading | translate }}
 					</h3>				
 					<p class="learning-principles__text">
-						{{p.text}}
+						{{ p.text | translate }}
 					</p>
 				</div>
 				
@@ -19,24 +19,25 @@
 </template>
 
 <script>
+	import Vue from 'vue';
 	export default {
   		data: function(){
   			return {
   				principles: [
 					{ 
 						img: 'hat',
-						heading: 'LOREM IPSUM DOLOR',
-						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',			
+						heading: 'Competence',
+						text: 'Competence description',			
 					},
 					{ 
 						img: 'lamp',
-						heading: 'UT ENIM AD MINIM',
-						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',			
+						heading: 'Experience',
+						text: 'Experience description',			
 					},
 					{ 
 						img: 'book',
-						heading: 'DUIS AUTE IRURE',
-						text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',			
+						heading: 'Flexibility',
+						text: 'Flexibility description',			
 					}
 					
 				]

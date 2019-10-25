@@ -3,50 +3,80 @@
 		<div class="main-slider__wrapper container-fluid">
 			<div class="row">
 				<div id="main-slider__right" class="main-slider__right main-slider__arr" v-on:click = "right"></div>
-				
 				<div id="main-slider__left" class="main-slider__left main-slider__arr" v-on:click = "left"></div>
 			</div>	
-			<div class="main-slider__slides">
-				<div class="main-slider__slide-single">				
-				<div class="main-slider__text">
-					<h1>
-						Учебный центр «Noostar» 1
-					</h1>
-					<p class="main-slider__welcome-text">
-						Учебный центр «Noostar»
-						Обучающие программы по программированию
-						и интернет-технологиям для людей любого
-						возраста и с любой базой знаний					
-					</p>
-					<a href="#" @click="showModalCourses" class="orange_btn btn-animation">Учиться</a>
+			<div class="main-slider__slides">				
+				<div class="main-slider__slide-single main-slider__banner-bg">	
+					<div class="main-slider__slide-container">			
+						<div class="main-slider__banner">
+							<h1 class="main-slider__banner-heading">
+								FLUTTER MEETUP 
+							</h1>
+							<p class="main-slider__banner-text">
+								{{ "event label" | translate }} 	
+							</p>
+							<a href="#" @click="showEvent" class="orange_btn banner-btn btn-animation">{{ "registration label" | translate }}</a>
+						</div>
+					</div>
+					<div class="container clearfix">
+						<div class="main-slider__banner-location">
+							<div class="location-icon">
+								
+							</div>
+							<p class="location-text">
+								{{ "event city label" | translate}}<br>
+								{{ "event address label" | translate }}
+							</p>							
+						</div>
+						<div class="main-slider__banner-time">
+							<div class="time-icon">
+								
+							</div>	
+							<div class="time-text">
+								16.00<br>
+								{{"event date label" | translate}}
+							</div>		
+											
+						</div>
+					</div>
 				</div>
+			<div class="main-slider__slide-single main-slider__slide-bg">	
+				<div class="main-slider__slide-container">
+					<div class="main-slider__text">
+						<h1>
+							{{ 'IT-school h1' | translate }}
+						</h1>
+						<p class="main-slider__welcome-text">
+							{{ 'Programmers learning' | translate }}
+						</p>
+						<a href="#" @click="showModalCourses" class="orange_btn btn-animation">{{ 'Learn btn' | translate }}</a>
+					</div>
+				</div>				
 			</div>
-			<div class="main-slider__slide-single">				
-				<div class="main-slider__text">
-					<h1>
-						Учебный центр «Noostar» 2
-					</h1>
-					<p class="main-slider__welcome-text">
-						Учебный центр «Noostar»
-						Обучающие программы по программированию
-						и интернет-технологиям для людей любого
-						возраста и с любой базой знаний					
-					</p>
-					<a href="#" class="orange_btn btn-animation">Учиться</a>
+			<div class="main-slider__slide-single main-slider__slide-bg">				
+				<div class="main-slider__slide-container">
+					<div class="main-slider__text">
+						<h1>
+							{{ 'IT-school h1' | translate }}
+						</h1>
+						<p class="main-slider__welcome-text">
+							{{ 'Technologies learning' | translate }}
+						</p>
+						<a href="#" class="orange_btn btn-animation">{{ 'Learn btn' | translate }}</a>
+					</div>
 				</div>
-			</div>
-			<div class="main-slider__slide-single">				
-				<div class="main-slider__text">
-					<h1>
-						Учебный центр «Noostar» 3
-					</h1>
-					<p class="main-slider__welcome-text">
-						Учебный центр «Noostar»
-						Обучающие программы по программированию
-						и интернет-технологиям для людей любого
-						возраста и с любой базой знаний					
-					</p>
-					<a href="#" class="orange_btn btn-animation">Учиться</a>
+			</div>			
+			<div class="main-slider__slide-single main-slider__slide-bg">				
+				<div class="main-slider__slide-container">
+					<div class="main-slider__text">
+						<h1>
+							{{ 'IT-school h1' | translate }}
+						</h1>
+						<p class="main-slider__welcome-text">
+							{{ 'Networking learning' | translate }}
+						</p>
+						<a href="#" class="orange_btn btn-animation">{{ 'Learn btn' | translate }}</a>
+					</div>
 				</div>
 			</div>			
 			</div>
@@ -57,6 +87,7 @@
 </template>
 
 <script>
+	import Vue from 'vue';
 	export default {
 		data: function () {
 			return{
@@ -134,10 +165,15 @@
 				this.reloadSlider();
 			},
 			showModalCourses() {    			
-    			this.$root.$emit('modal-on');	        	
-	      	}					
+    				this.$root.$emit('modal-on');	        	
+	      		},
+			showEvent(){
+				this.$root.$emit('event-on');
+			}
+					
 		},
 		mounted: function () {
+                    Vue.i18n.set(Vue.i18n.locale());
 		    this.reloadSlider();
 			this.$nextTick(function() {
 				window.addEventListener('resize', this.handleResize);
@@ -191,21 +227,90 @@
 			height: 600px;
 			transition: all ease 1s;
 			display: inline-block;
-			background: url('../assets/images/bg-header.jpg') no-repeat center top/cover
+			vertical-align: top;			
+		}
+		&__slide-bg{
+			background: url('../assets/images/bg-header1.jpg') no-repeat center top/cover
+		}
+		&__banner-bg{
+			background: url('../assets/images/flutter.jpg') no-repeat center top/cover
+		}
+		&__slide-container{
+			width:60%;
+			margin-right: auto;
+			margin-left: auto;
 		}
 		&__text{
-			margin: 180px 0 0 200px;
+			margin: 180px 0 0 0px;
 			z-index: 10;
 			color: @lightText;
-			text-align: left;			
+			text-align: left;						
 		}
-		&__welcome-text{
-			font-family: Muller Light;
+		&__banner{
+			margin: 180px 0 0 0px;
+			z-index: 10;
+			color: @lightText;
+			text-align: center;
+		}
+		&__banner-heading{
+			font-size: 60px;
+			text-align: center;	
+		}
+		&__banner-text{
 			font-size: 20px;
-			margin-top: 36px;
-			margin-bottom: 28px;
+			margin-top: 20px;
+			margin-bottom: 38px;
 			animation: text_appering 2s;
-			width: 40%;
+			text-align: center !important;	
+			width:100%;	
+			margin-bottom: 50px;	
+		}
+		&__banner-btn{
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+		}
+		&__banner-location{
+			float: left;
+			margin-top: 100px;
+			.location-icon{
+				background: url('../assets/images/location.png') center/contain no-repeat content-box;
+				width: 45px;
+				height: 45px;
+				float: left;
+				margin-right: 15px;
+				margin-top: 8px;	
+			}
+			.location-text{
+				font-size: 20px;
+				float: right;
+				color: @lightText;
+			}
+		}
+		&__banner-time{
+			float: right;
+			margin-top: 100px;
+			.time-icon{
+				background: url('../assets/images/time.png') center/contain no-repeat content-box;
+				width: 45px;
+				height: 45px;
+				float: right;
+				margin-left: 15px;
+				margin-top: 8px;	
+			}
+			.time-text{
+				font-size: 20px;
+				float: left;
+				color: @lightText;
+				text-align: right;
+			}
+		}
+		&__welcome-text{			
+			font-size: 20px;
+			margin-top: 20px;
+			margin-bottom: 38px;
+			animation: text_appering 2s;
+			width: 80%;
 		}												
 	}	
 	.arr-active{
@@ -213,16 +318,15 @@
 	}	
 	
 	h1{
-		font-family: Muller;
-		font-weight: bold;
-		font-size: 44px;
+		font-weight: bold !important;		
 		color: @lightText;
 		animation: h1_appering 2s;
 	}
-
+	
 	.btn-animation{
 		animation: btn_appering 2s;
 	}	
+	
 
 	@media (max-width: 1000px) {  
 		.main-slider{	
@@ -230,6 +334,10 @@
 		        width: 66px;
 				height: 66px;	       
 		    }
+		    &__banner-heading{
+				font-size: 48px;
+				text-align: center;	
+			}
 		    &__welcome-text{			
 				font-size: 16px;
 				text-align: center;	
@@ -242,9 +350,40 @@
 			}
 		} 		
 		h1{
-			font-size: 34px;
+			font-size: 34px ;
 			text-align: center;	
 		}
+	}
+	@media (max-width: 853px) {  
+		.main-slider{	
+			&__banner {
+		        margin-top: 110px;
+		    }	
+		    &__banner-text{
+		    	font-size: 16px;
+		    }	
+		    &__banner-location{
+		    	.location-text{
+					font-size: 16px;				
+				}
+				.location-icon{					
+					width: 40px;
+					height: 40px;
+					margin-top: 5px;
+				}
+		    }  
+		    &__banner-time{
+		    	.time-text{
+					font-size: 16px;				
+				}
+				.time-icon{					
+					width: 40px;
+					height: 40px;
+					margin-top: 5px;
+				}
+		    }   
+		} 		
+		
 	}
 
 	@media (max-width: 760px) {   
@@ -258,20 +397,16 @@
 		}		
 	}
 
-	@media (max-width: 708px) {   
-		.main-slider{				
-		    &__welcome-text{			
-				width: 60%;			
+	
+	@media (max-width: 618px) {   
+		.main-slider{		    
+			&__text{				
+				margin-top: 120px;	
 			}
-			&__text{
-				width: 60%;
-				margin-top: 140px;		
-			}
-		}			
+		}
 	}
-
 	@media (max-width: 500px) {   
-		.main-slider{
+		.main-slider{			
 		    &__left{
 				left:  10px;
 		    }
@@ -285,6 +420,39 @@
 			&__text{				
 				margin-top: 100px;	
 			}
+			&__banner-location{
+				margin-top: 70px;
+				clear: both;
+				margin-right: auto;
+				margin-left: auto;
+				.location-icon{
+					clear: both;
+					display: block;
+					margin-right: auto;
+					margin-left: auto;
+					margin-bottom: 20px;
+				}
+				.location-text{
+					clear: both;
+					display: block;
+					text-align: left;
+				}
+			}
+			&__banner-time{
+				margin-top: 70px;
+				.time-icon{
+					clear: both;
+					display: block;
+					margin-right: auto;
+					margin-left: auto;
+					margin-bottom: 20px;
+				}
+				.time-text{
+					clear: both;
+					display: block;
+					text-align: right;
+				}
+			}
 		}
 	}
 
@@ -296,18 +464,42 @@
 				margin-right: auto;
 				margin-left: auto;					
 			}
+			&__banner-heading{
+				font-size: 40px !important;
+				text-align: center;	
+			}
 			&__text{
-				width: 60%;
+				
 				margin-top: 100px;	
 			}
+			&__banner-text{
+		    	font-size: 14px;
+		    }	
+		    &__banner-location{
+		    	.location-text{
+					font-size: 14px;				
+				}
+				.location-icon{					
+					width: 35px;
+					height: 35px;
+				}
+		    }  
+		    &__banner-time{
+		    	.time-text{
+					font-size: 14px;				
+				}
+				.time-icon{					
+					width: 35px;
+					height: 35px;
+				}
+		    }   
 		}		
 		h1{
-			font-size: 28px;
+			font-size: 36px !important;
 			text-align: center;	
 		}
 	}
-
-	@media (max-width: 380px) {   
+	@media (max-width: 390px) {   
 		.main-slider{	
 			&__arr {
 		        width: 46px;
@@ -315,6 +507,8 @@
 		    }
 		} 	
 	}
+
+	
 	
 	@media (max-width: 340px) {
 		.main-slider{				
@@ -322,14 +516,14 @@
 				width: 70%;						
 			}
 			&__text{
-				margin-top: 70px;	
+				margin-top: 60px;	
 			}
 		}
 	}
 
 	//animation --------------------
 
-	@keyframes h1_appering {
+	/*@keyframes h1_appering {
 		0%{
 			margin-top: -20px;
 			opacity: 0;
@@ -366,5 +560,5 @@
 		100%{					
 			opacity: 1;	
 		}		
-	}
+	}*/
 </style>
