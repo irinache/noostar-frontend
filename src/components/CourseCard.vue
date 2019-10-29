@@ -107,8 +107,7 @@
 		}	
 		&__head{
 			background-color: @mainBlue;
-			border-radius: 3px;
-			font-family: Muller;
+			border-radius: 3px;			
 			font-size: 10px;
 			text-align: center;
 			color: @lightText;
@@ -116,31 +115,31 @@
 			overflow: auto;
 		}
 		&__date{
-			font-family: Muller;
 			font-weight: bold;
 			font-size: 10px;
 			color: @lightText;
 			margin-right: 5px;
 		}
 		&__image{
-			width: 100%;
-			height: 180px;
+			width: 308px;
+			height: 154px;
+			overflow: hidden;
 			/*background: url("../assets/images/course_img.jpg");*/
 			margin-top: -3px;
 			&__cover{
-				width: 100%;
-	                        height: 180px;
+				width: 100%;	            
 				margin-top: -3px;
+				object-fit: cover;
 			}
 		}
-		&__course-name{
-			font-family: Muller;
+		&__course-name{		
 			font-weight: bold;
 			color: @mainOrange;
 			text-transform: uppercase;
 			font-size: 12px;
 			text-align: left;		
-			margin-left: 23px;		 
+			margin-left: 23px;	
+			margin-right: 23px;		 
 			margin-bottom: 13px;
 			height: 35px;
 		}
@@ -162,16 +161,14 @@
 		&__info-title{
 			margin-left: 23px;
 			margin-top: 10px;
-			margin-bottom: 3px;
-			font-family: Muller;		
+			margin-bottom: 3px;					
 			font-size: 10px;
 			color: @infoTitle;
 			text-align: left;
 		}
 		&__info-text{
 			margin-left: 23px;
-			margin-bottom: 10px;
-			font-family: Muller;		
+			margin-bottom: 10px;					
 			font-size: 10px;
 			color: @darkText;
 			text-align: left;
@@ -211,6 +208,10 @@
 			&__head{
 				height: 100px;
 			}
+			&__image{
+				width: 248px;
+				height: 124px;
+			}
 		}		
 	}
 	@media (max-width: 340px) {   
@@ -219,6 +220,10 @@
 			height: 550px;
 			&__course-name{
 				height: 50px;
+			}
+			&__image{
+				width: 218px;
+				height: 109px;
 			}
 		}	
 					

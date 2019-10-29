@@ -78,8 +78,6 @@
         background-color: @mainBlue;        
     }
     &__contact-text {
-        font-family: Lato;
-        font-weight: 600;
         font-size: 15px;
         color: @lightText;
         text-align: left; 
@@ -113,8 +111,7 @@
         padding: 0;
         margin:0;
         padding: 9px 12px 7px 12px;        
-        border-radius: 4px;        
-        font-family: Muller;
+        border-radius: 4px;
         font-size: 13px;  
         color: @lightText; 
         border: 1px solid transparent;        

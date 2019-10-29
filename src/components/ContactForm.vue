@@ -100,8 +100,7 @@
 			padding-left: 7px;
 			padding: 7px 15px 6px 15px;
 		}
-		&__link{
-			font-family: Muller;
+		&__link{			
 			font-size: 12px;
 			margin-bottom: 5px;
 			text-decoration: underline;			
@@ -128,8 +127,7 @@
 		 resize: none;
 	}
 
-	label{
-		font-family: Muller;
+	label{		
 		font-size: 12px;
 		margin-bottom: 5px;
 		color: @text;

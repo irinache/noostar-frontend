@@ -54,20 +54,17 @@
 			border-radius: 3px 3px 0px 0px;			
 		}
 		&__name{
-			font-family: Muller Medium;
 			color: @heading;
 			font-size: 18px;
 			margin-top: 30px;
 		}
 		&__specialty{
-			font-family: Muller UltraLight;
 			color: @text;
 			font-size: 11px;
 			margin-top: 14px;
 			text-transform: uppercase;
 		}
-		&__text{
-			font-family: Muller Light;
+		&__text{			
 			color: @text;
 			font-size: 12px;
 			margin-top: 24px;

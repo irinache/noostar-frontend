@@ -23,7 +23,6 @@
 
 	.heading-left h2{
 		color: #393838;
-		font-family: Muller;
 		font-weight: bold;
 		text-align: left;
 		text-transform: uppercase;

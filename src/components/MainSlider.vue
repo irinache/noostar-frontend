@@ -386,6 +386,46 @@
 		
 	}
 
+	@media (max-width: 768px) {   
+		.main-slider{
+		     	&__text{				
+				margin-top: 100px;	
+			}
+			&__banner-location{
+				margin-top: 70px;
+				clear: both;
+				margin-right: auto;
+				margin-left: auto;
+				.location-icon{
+					clear: both;
+					display: block;
+					margin-right: auto;
+					margin-left: auto;
+					margin-bottom: 20px;
+				}
+				.location-text{
+					clear: both;
+					display: block;
+					text-align: left;
+				}
+			}
+			&__banner-time{
+				margin-top: 70px;
+				.time-icon{
+					clear: both;
+					display: block;
+					margin-right: auto;
+					margin-left: auto;
+					margin-bottom: 20px;
+				}
+				.time-text{
+					clear: both;
+					display: block;
+					text-align: right;
+				}
+			}
+		}		
+	}
 	@media (max-width: 760px) {   
 		.main-slider{
 		    &__left{
@@ -456,6 +496,46 @@
 		}
 	}
 
+	@media (max-width: 449px) {   
+		.main-slider{
+			&__banner{
+				margin-top: 60px;
+			}
+		    &__banner-location{	
+		    	margin-top: 30px;	
+		    	width: 100%; 
+				.location-icon{						
+					width: 100%;
+					margin-right: auto;
+					margin-left: auto;
+					margin-bottom: 7px;					
+				}
+				.location-text{	
+					width: 100%;
+					margin-right: auto;
+					margin-left: auto;
+					text-align: center;
+				}
+			}
+			&__banner-time{	
+				margin-top: 10px;
+				width: 100%; 			
+				.time-icon{
+					width: 100%;
+					margin-right: auto;
+					margin-left: auto;	
+					margin-bottom: 7px;
+				}
+				.time-text{					
+					width: 100%;
+					margin-right: auto;
+					margin-left: auto;
+					text-align: center;
+				}
+			}
+		}		
+	}
+
 	@media (max-width: 425px) {   
 		.main-slider{				
 		    &__welcome-text{			
@@ -468,19 +548,18 @@
 				font-size: 40px !important;
 				text-align: center;	
 			}
-			&__text{
-				
+			&__text{				
 				margin-top: 100px;	
 			}
 			&__banner-text{
 		    	font-size: 14px;
 		    }	
 		    &__banner-location{
+		    	margin-top: 60px;
 		    	.location-text{
 					font-size: 14px;				
 				}
-				.location-icon{					
-					width: 35px;
+				.location-icon{
 					height: 35px;
 				}
 		    }  
@@ -489,7 +568,6 @@
 					font-size: 14px;				
 				}
 				.time-icon{					
-					width: 35px;
 					height: 35px;
 				}
 		    }   

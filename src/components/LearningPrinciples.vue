@@ -68,8 +68,7 @@
 			height: 109px;
 			margin: 30px;
 		}
-		&__text{
-			font-family: Muller Light;
+		&__text{			
 			color: @text;
 		}
 	}	

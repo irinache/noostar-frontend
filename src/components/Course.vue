@@ -166,15 +166,13 @@ export default {
 			margin-top: 40px;
 			padding: 0 !important;
 		}
-		&__info-title{
-			font-family: Muller;
+		&__info-title{			
 			font-weight: bold;
 			font-size: 14px;
 			color: @darkText;
 			margin-bottom: 5px;
 		}
-		&__info-text{
-			font-family: Muller Light;
+		&__info-text{			
 			color: @text;
 			font-size: 14px;
 
@@ -195,8 +193,7 @@ export default {
 		border: 1px solid @border;		
 		display: inline-block;
 	}	
-	.table-heading{
-		font-family: Muller Regular;		
+	.table-heading{			
 		font-size: 14px;
 		color: @darkText;
 		margin-bottom: 5px;

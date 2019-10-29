@@ -59,8 +59,6 @@
 	        background-color: @mainBlue;        
 	    }
 	    &__contact-text {
-	        font-family: Lato;
-	        font-weight: 600;
 	        font-size: 15px;
 	        color: @lightText;
 	        text-align: left;
@@ -90,8 +88,7 @@
 			transition: 0.2s;
 		}
 		&__text{
-			color: @text;
-			font-family: Muller;
+			color: @text;			
 			text-align: left;					
 		}
 		&__brdr-btm{
@@ -155,8 +152,5 @@
 	        padding: 5px; 
 	    }
 	}
-
-
-	
 	
 </style>

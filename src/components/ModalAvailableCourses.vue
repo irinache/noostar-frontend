@@ -24,11 +24,11 @@
 						</router-link>					  
 						<select class="custom_select modal-select-position" @change="chekboxChange(course.uuid, '', $event.target.value)">
 							<option class="custom_option" :value="empty">{{ 'not chosen' | translate}}</option>
-        	                                        <option class="custom_option" v-for="lform in learningForms" :value='lform.uuid'> {{"learningform"+lform.uuid | translate}}
+        	                                        <option class="custom_option" v-for="lform in learningForms" :value='lform.uuid'> {{"learningform"+lform.uuid | translate}}</option>
 	                                        </select>
                 	                        <select class="custom_select modal-select-position" @change="chekboxChange(course.uuid, type=$event.target.value)">
 							<option class="custom_option" :value="empty">{{ 'not chosen' | translate}}</option>
-                        	                        <option class="custom_option" v-for="ltype in learningTypes" :value='ltype.uuid'>{{"learningtype"+ltype.uuid | translate}}
+                        	                        <option class="custom_option" v-for="ltype in learningTypes" :value='ltype.uuid'>{{"learningtype"+ltype.uuid | translate}}</option>
                                 	        </select>
 					</div>
 					<div class="orange_btn modal-main-btn" @click="showNextStep">{{"Next label" | translate }}</div>
@@ -315,8 +315,7 @@ export default {
 		padding: 5px 10px;
 		width: 180px;
 		text-align: left;
-		border-radius: 4px;
-		font-family: Muller;
+		border-radius: 4px;		
 		font-size: 14px;		
 		color:@darkText;
 		margin-top: 20px;

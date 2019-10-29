@@ -20,7 +20,6 @@
 
 	.heading h2{
 		color: @heading;
-		font-family: Muller;
 		font-weight: bold;
 		text-align: center;
 		text-transform: uppercase;
