@@ -85,8 +85,7 @@
 		background: url('../assets/images/hat.png') center no-repeat;
 	}
 
-	h3{
-		font-family: Muller Medium;
+	h3{		
 		font-size: 18px !important;
 		margin-bottom: 20px;
 	}
