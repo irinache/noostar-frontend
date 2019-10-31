@@ -233,7 +233,7 @@
 			background: url('../assets/images/bg-header1.jpg') no-repeat center top/cover
 		}
 		&__banner-bg{
-			background: url('../assets/images/flutter.jpg') no-repeat center top/cover
+			background: url('../assets/images/flutter.png') no-repeat center top/cover
 		}
 		&__slide-container{
 			width:60%;
